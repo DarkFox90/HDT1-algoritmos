@@ -1,5 +1,5 @@
 public interface IRadio {
-    public void setPowerOn(boolean on);
+    public void setPower(boolean on);
 
     public boolean isOn();
 
