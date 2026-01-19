@@ -20,7 +20,6 @@ public class Controller {
             } catch (NumberFormatException e) {
                 option = 0;
             }
-
             switch (option){
                 case 1:
                     togglePower();
@@ -43,8 +42,7 @@ public class Controller {
                 default:
                     view.showMessage("opcion no valida, vuelva a intentar");
             }
-        }
-           
+        }          
         
     }
 
@@ -65,7 +63,7 @@ public class Controller {
             radio.setBand(false);
             view.showMessage("cambiando a FM");
         } else {
-            radio.setBand(true);
+            radio.setBand(true);    
             view.showMessage("cambiando a AM");
         }
         showCurrentStatus();
@@ -94,9 +92,9 @@ public class Controller {
         view.showMessage("emisora guardada");
         showCurrentStatus();
     }
-    // Falata implementar la logica de este metodo para 
+    // Falata implementar la logica de este metodo 
     private void selecStation(){
-
+        
     }
 
 }

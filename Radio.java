@@ -48,6 +48,7 @@ public class Radio implements IRadio {
             if (this.fmFrequence > 107.9){
                 this.fmFrequence = 87.9;
                 }
+                fmFrequence = Math.round(fmFrequence * 10.0) / 10.0;
             }   
         } 
     
