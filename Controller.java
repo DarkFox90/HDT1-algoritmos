@@ -2,16 +2,15 @@ public class Controller {
     IRadio radio;
     View view;
 
-    public Controller(IRadio radio, View view) {
+    public Controller() {
         this.radio = new Radio();
         this.view = new View();
     }
     
     public void Start(){
         int option = 0;
-        
+        view.showStatus(radio.isOn(), radio.isAm(), radio.getFrequence());
         while (option != 6){
-            view.showStatus(radio.isOn(), radio.isAm(), radio.getFrequence());
             view.showMenu();
             String entry =  view.askOption(option);
 
@@ -97,7 +96,7 @@ public class Controller {
     }
     // Falata implementar la logica de este metodo para 
     private void selecStation(){
-        
+
     }
 
 }
