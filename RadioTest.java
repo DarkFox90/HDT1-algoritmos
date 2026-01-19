@@ -22,5 +22,17 @@ public class RadioTest {
         radio.next();
         assertEquals(88.1, radio.getFrequence(), 0.1);
     }
+
+    @Test
+    public void testSave() {
+        Radio radio = new Radio();
+        radio.setBand(true);
+        radio.next();
+        double radioF = radio.getFrequence();
+        radio.save(1);
+        radio.next();
+        double radioA = radio.get(1);
+        assertEquals(radioF, radioA, 0.1);
+    }
     
 }
