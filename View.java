@@ -7,15 +7,17 @@ public class View {
         sc = new Scanner(System.in);
     }
 
-    public int showMenu() {
+    public void showMenu() {
         System.out.println("1. encender la radio");
         System.out.println("2. cambiar AM a FM");
         System.out.println("3. cambiar frecuencia");
         System.out.println("4. guardar emisora");
         System.out.println("5. seleccionar emisora");
         System.out.println("6. apagar radio");
-        return sc.nextInt();
+    }
 
+    public String askOption(int option) {
+        return sc.nextLine();
     }
 
     public void showStatus(boolean on, boolean am, double frequence) {

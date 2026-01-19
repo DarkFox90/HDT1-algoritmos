@@ -16,22 +16,27 @@ public class Radio implements IRadio {
         this.fmButtons = new double[12];
     }
 
+    @Override
     public void setPower(boolean on) {
         this.on = on;
     }
 
+    @Override
     public boolean isOn(){
         return this.on;
     }
 
+    @Override
     public void setBand(boolean am){
         this.am = am;
     }
 
+    @Override
     public boolean isAm(){
         return this.am;
     }
 
+    @Override
     public void next(){
         if (this.am == true){
             this.amFrequence += 10;
@@ -45,7 +50,8 @@ public class Radio implements IRadio {
                 }
             }   
         } 
-
+    
+    @Override
     public double getFrequence(){
         if (this.am == true){
             return this.amFrequence;
@@ -54,6 +60,7 @@ public class Radio implements IRadio {
         }
     }
 
+    @Override
     public void save(int button){
         if (this.am){
             this.amButtons[button -1] = this.amFrequence;
@@ -62,6 +69,7 @@ public class Radio implements IRadio {
         }
     }
 
+    @Override
     public double get(int button){
         if (this.am) {
             return this.amButtons[button -1];

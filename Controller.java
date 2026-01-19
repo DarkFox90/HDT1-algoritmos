@@ -3,12 +3,50 @@ public class Controller {
     View view;
 
     public Controller(IRadio radio, View view) {
-        this.radio = radio;
-        this.view = view;
+        this.radio = new Radio();
+        this.view = new View();
     }
-    // Falata implementar la logica de este metodo para iniciar la aplicacion
+    
     public void Start(){
+        int option = 0;
+        
+        while (option != 6){
+            view.showStatus(radio.isOn(), radio.isAm(), radio.getFrequence());
+            view.showMenu();
+            String entry =  view.askOption(option);
 
+            //intenta convertir la entrada a numero, si el usuario escribe otra cosa asigna 0 para evitar cualquiqer error
+            try {
+                option = Integer.parseInt(entry.trim());
+            } catch (NumberFormatException e) {
+                option = 0;
+            }
+
+            switch (option){
+                case 1:
+                    togglePower();
+                    break;
+                case 2:
+                    changeBand();
+                    break;
+                case 3:
+                    nextStation();
+                    break;
+                case 4:
+                    saveStation();
+                    break;
+                case 5:
+                    selecStation();
+                    break;
+                case 6:
+                    togglePower();
+                    break;
+                default:
+                    view.showMessage("opcion no valida, vuelva a intentar");
+            }
+        }
+           
+        
     }
 
     private void togglePower(){
@@ -59,7 +97,7 @@ public class Controller {
     }
     // Falata implementar la logica de este metodo para 
     private void selecStation(){
-
+        
     }
 
 }
