@@ -34,6 +34,13 @@ public class View {
         System.out.println("frecuencia actual: " + frequence);
     }
 
+    public int getButton() {
+        System.out.println("seleccione una estación de 1 a 12: ");
+        int selectButton = sc.nextInt();
+
+        return selectButton;
+    }
+
     public void showMessage(String message) {
         System.out.println(message);
     }
