@@ -38,9 +38,14 @@ public class View {
 
     public int getButton() {
         System.out.println("seleccione una estación de 1 a 12: ");
-        int selectButton = sc.nextInt();
-
-        return selectButton;
+        
+        // verifica que el usuario ingrese un numero convirtiendo el string a un entero
+        try {
+            String uInput = sc.nextLine();
+            return Integer.parseInt(uInput.trim());
+        } catch (NumberFormatException e) {
+            return -1;
+        }
     }
 
     public void showMessage(String message) {

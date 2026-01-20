@@ -78,4 +78,14 @@ public class Radio implements IRadio {
             return this.fmButtons[button -1];
         }   
     }
+
+    @Override
+    public void setFrequence(double frequence) {
+        if (this.am) {
+            this.amFrequence = frequence;
+        } else {
+            this.fmFrequence = frequence;
+        }
+    }
 }
+

@@ -14,4 +14,6 @@ public interface IRadio {
     public void save(int button);
 
     public double get(int button);
+    
+    public void setFrequence(double frequence);
 }

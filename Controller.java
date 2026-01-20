@@ -87,14 +87,40 @@ public class Controller {
         if (!radio.isOn()){
             view.showMessage("la radio esta apagada, no se puede guardar emisora");
             return;
+        } 
+        int buttonF = view.getButton();
+        if (buttonF < 1 || buttonF > 12){
+            view.showMessage("boton no valido, seleccione un boton entre 1 y 12");
+        } else {
+            radio.save(buttonF);
+            view.showMessage("Emisora guardada");
+            showCurrentStatus();
         }
-        radio.save(view.getButton());
-        view.showMessage("emisora guardada");
-        showCurrentStatus();
     }
-    // Falata implementar la logica de este metodo 
+    
     private void selecStation(){
-        
+        if (!radio.isOn()){
+            view.showMessage("la radio esta apagada, no se puede cambiar de emisora");
+            return;
+        }
+
+       int buttonF = view.getButton();
+
+        if (buttonF < 1 || buttonF > 12){
+            view.showMessage("boton no valido, seleccione un boton entre 1 y 12");
+        } else {
+            double selectFrequence = radio.get(buttonF);
+
+            if (selectFrequence == 0){
+                view.showMessage("no ha guardado ninguna emisora aqui");
+                return;
+            } else {
+                radio.setFrequence(selectFrequence);
+                view.showMessage("Emisora seleccionada");
+                showCurrentStatus();
+            }
+            
+        }
     }
 
 }
