@@ -4,35 +4,36 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
-    public void testPower(){
+    public void testPower() {
         Radio radio = new Radio();
-        radio.setPower(true);
-        assertTrue(radio.isOn());
-        radio.setPower(false);
+        radio.turnOn();
+        assertTrue(radio.isOn());       
+        radio.turnOff();
         assertFalse(radio.isOn());
     }
 
     @Test
-    public void testNext(){
+    public void testNextStation() {
         Radio radio = new Radio();
-        radio.setBand(true);
-        radio.next();
-        assertEquals(540, radio.getFrequence(), 0.1);
-        radio.setBand(false);
-        radio.next();
-        assertEquals(88.1, radio.getFrequence(), 0.1);
+        radio.turnOn();
+        radio.switchBand("AM");
+        radio.nextStation();
+        assertEquals(540.0, radio.getCurrentStation(), 0.1);
+        radio.switchBand("FM");
+        radio.nextStation();
+        assertEquals(88.1, radio.getCurrentStation(), 0.1);
     }
 
     @Test
-    public void testSave() {
+    public void testSaveAndSelect() {
         Radio radio = new Radio();
-        radio.setBand(true);
-        radio.next();
-        double radioF = radio.getFrequence();
-        radio.save(1);
-        radio.next();
-        double radioA = radio.get(1);
-        assertEquals(radioF, radioA, 0.1);
+        radio.turnOn();
+        radio.switchBand("AM");
+        radio.nextStation(); 
+        double frecuenciaOriginal = radio.getCurrentStation();
+        radio.saveStation("1");
+        radio.nextStation();
+        radio.selectStation("1");
+        assertEquals(frecuenciaOriginal, radio.getCurrentStation(), 0.1);
     }
-    
 }
