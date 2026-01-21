@@ -15,12 +15,33 @@ public class Radio implements RadioInterface {
         this.amButtons = new double[12];
         this.fmButtons = new double[12];
     }
-    public void turnOn() { this.on = true; }
-    public void turnOff() { this.on = false; }
-    public boolean isOn() { return this.on; }
-    public void switchBand(String band) { this.band = band; }
-    public String getBand() { return this.band; }
 
+    @Override
+    public void turnOn() { 
+        this.on = true; 
+    }
+
+    @Override
+    public void turnOff() { 
+        this.on = false; 
+    }
+
+    @Override
+    public boolean isOn() { 
+        return this.on; 
+    }
+    
+    @Override
+    public void switchBand(String band) { 
+        this.band = band; 
+    }
+
+    @Override
+    public String getBand() { 
+        return this.band; 
+    }
+
+    @Override
     public void nextStation() {
         if (this.band.equals("AM")) {
             this.amFrequence += 10;
@@ -32,10 +53,12 @@ public class Radio implements RadioInterface {
         }
     }
 
+    @Override
     public double getCurrentStation() {
         return this.band.equals("AM") ? this.amFrequence : this.fmFrequence;
     }
 
+    @Override
     public void saveStation(String station) {
         int button = Integer.parseInt(station);
         if (this.band.equals("AM")) {
@@ -45,6 +68,7 @@ public class Radio implements RadioInterface {
         }
     }
 
+    @Override
     public void selectStation(String station) {
         int button = Integer.parseInt(station);
         if (this.band.equals("AM")) {
